@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/UI/input_field.dart';
 import 'package:flutter_application/home.dart';
+import 'package:flutter_application/keys.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -67,6 +68,7 @@ class LoginPage extends StatelessWidget {
                       width: 150,
                       height: 80,
                       child: ElevatedButton(
+                        key: Keys.loginKey,
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const MyHomePage(

@@ -6,14 +6,23 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application/home.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter_application/keys.dart';
 import 'package:flutter_application/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
+    //login
+    expect(find.byType(ElevatedButton), findsOneWidget);
+    await tester.tap(find.byKey(Keys.loginKey));
+    await tester.pumpAndSettle();
+
+    /// You'd also want to be sure that your page is now
+    /// present in the screen.
+    expect(find.byType(MyHomePage), findsOneWidget);
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
