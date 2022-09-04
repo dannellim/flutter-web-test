@@ -1,21 +1,13 @@
-import 'package:openid_client/openid_client.dart';
+import 'dart:convert';
+
 import 'package:flutter_application/login.dart';
 import 'package:flutter_application/helpers/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:openid_client/openid_client.dart';
+import 'dart:convert';
 
 void main() async {
-  TestOpenId();
   runApp(const MyApp());
-}
-
-void TestOpenId() async {
-  // print a list of known issuers
-  print(Issuer.knownIssuers);
-
-  // discover the metadata of the google OP
-  var issuer = await Issuer.discover(Issuer.microsoft);
-
-  print(issuer);
 }
 
 class MyApp extends StatelessWidget {
@@ -24,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    TestOpenId(context);
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -41,5 +34,17 @@ class MyApp extends StatelessWidget {
         home: const LoginPage()
         //home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
+  }
+
+  static void TestOpenId(BuildContext context) async {
+    var config = json.decode(await DefaultAssetBundle.of(context)
+        .loadString("config/openid-configuration.json"));
+    print(config);
+    //final Map<String, String> claimsMap;
+    var metadata = OpenIdProviderMetadata.fromJson(config);
+    print(config);
+
+    //var issuer = new Issuer(metadata);
+    // var client = new Client(issuer, "client_id", "client_secret");
   }
 }

@@ -40,11 +40,11 @@ class LoginPage extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(80.0)),
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(24.0),
                           child: Image.asset(
                             "images/yokogawa.png",
-                            width: 60,
-                            height: 60,
+                            width: 80,
+                            height: 80,
                           ),
                         )),
                     const Form(

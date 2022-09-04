@@ -15,6 +15,7 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
+
     //login
     expect(find.byType(ElevatedButton), findsOneWidget);
     await tester.tap(find.byKey(Keys.loginKey));
